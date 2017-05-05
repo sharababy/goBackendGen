@@ -1,0 +1,103 @@
+<html>
+
+	<head>
+		<title>
+		 	Go-Backend Generator
+		</title>
+
+		<link rel="stylesheet" type="text/css" href="markup/styles/home.css">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+		<style type="text/css">
+			.group{
+				display: none;
+			}
+			.object{
+				display: none;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<nav-bar>
+			<nav-left>
+				<a href="/"> Go-Backend Generator </a>
+			</nav-left>
+
+			<nav-right>
+				
+				<a href="#">DOCS</a>
+				<a href="#">DEVELOPERS</a>
+				<a href="#">ABOUT</a>|
+				<a href="#">LOGIN / SIGN UP</a>
+
+			</nav-right>
+		</nav-bar>
+		<form method="POST" action="/makeFunction">
+		<div class="content">
+			
+			
+				<div class="box1 group1" id="option1">
+					<div class="heading" >Create Object</div>
+					
+					<p class="normal">
+						Create Object : <input type="checkbox" name="object" value="object" id="object"><br>
+					</p>
+
+					<p class="normal object">
+						Object Details : 
+
+						<input type="text" name="objectName" placeholder="Object Name">
+						
+						<button class="floatRight" id="addAttribute"><small>Add Attribute</small></button><br>
+						<button class="floatRight" id="removeAttribute"><small>Remove Attribute</small></button>
+						<br><br>
+						<input type="text" name="objectAttr1" placeholder="Object Attribute 1">
+						
+					</p>
+
+					<button class="button" type="Submit"> Generate </button>	
+				</div>
+
+
+
+		</div>
+
+		</form>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				
+
+				$('#object').click(function(){
+       				var inputValue = $(this).attr("value");
+        			$("." + inputValue).toggle();
+    			});
+
+				var attrCount = 2;
+
+    			$("#addAttribute").click(function () {
+   					$(".object").append(' <input type="text" id="objectAttr'+attrCount+'" name="objectAttr'+attrCount+'" placeholder="Object Attribute '+attrCount+'">');
+   					
+   					attrCount++;
+   					return false;
+				
+				});
+				$("#removeAttribute").click(function () {
+   					if(attrCount > 2)
+   					{ 
+   						attrCount--;
+   						$('#objectAttr'+attrCount).remove();
+   					}
+
+   					return false;
+				});
+			});
+
+		</script>
+
+	</body>
+
+</html>

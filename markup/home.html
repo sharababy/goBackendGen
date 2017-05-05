@@ -1,0 +1,207 @@
+<html>
+
+	<head>
+		<title>
+		 	Go-Backend Generator
+		</title>
+
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="markup/styles/home.css">
+		<link rel="shortcut icon" href="markup/styles/favicon.ico"/>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+		<style type="text/css">
+			.group{
+				display: none;
+			}
+			.object{
+				display: none;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<nav-bar>
+			<nav-left>
+				<a href="/"> Go-Backend Generator </a>
+			</nav-left>
+
+			<nav-right>
+				
+				<a href="#">DOCS</a>
+				<a href="#">DEVELOPERS</a>
+				<a href="#">ABOUT</a>|
+				<a href="#">LOGIN / SIGN UP</a>
+
+			</nav-right>
+		</nav-bar>
+		<!-- <form method="POST" id="makeForm"> -->
+		<div class="content">
+			
+				<div class="box1">
+					<div class="heading">Router (Basics)</div>
+
+					
+					<div class="opt1">
+						<input type="text" id="url" name="url" placeholder="Router URL (eg: /yourRoute/:user/:data/ ) ">
+					</div>
+					
+					<div class="opt1">
+						
+						HTTP Method :
+						<select name="method" id="method">
+							<option value="GET">
+								GET
+							</option>
+							<option value="POST">
+								POST
+							</option>
+							<option value="PUT"> 
+								PUT
+							</option>
+							<option value="DELETE">
+								DELETE
+							</option>
+						</select>
+
+					</div>
+					<div class="opt2">
+						
+						What happens when this route is called :<br><br>
+
+						<select name="action" id="action">
+							<option value="option1">
+								Serve HTML ( Template )
+							</option>
+							<option value="option2">
+								Serve Static Files (CSS/JS)
+							</option>
+							<option value="option3"> 
+								Save Data To Database (MongoDB / MySQL)
+							</option>
+							<option value="option4">
+								Accept Form Data
+							</option>
+						</select>
+					</div>					
+				</div>
+
+
+				<div class="box1 group1" id="option1">
+					<div class="heading" >Serve HTML</div>
+
+					<div class="opt1">
+						<input type="text" name="pathToFile" placeholder="Path to HTML file (w.r.t local Directory)" id="pathToHTML">
+					</div>
+
+					<p class="normal">
+						Enclose Object in Template : <input type="checkbox" name="object" value="object" id="object"><br>
+						<small>(Leave unchecked for static HTML Pages)</small>
+					</p>
+
+					<p class="normal object">
+						Select Object : 
+
+						<select name="objectSelect" id="objectSelect">
+							<option value="option1">
+								User
+							</option>
+							<option value="option2">
+								Foo
+							</option>
+							<option value="option3"> 
+								Bar
+							</option>
+							
+						</select>
+						
+					</p>
+
+					<button class="button" id="submit">GENERATE &#8594;</button>
+				</div>
+
+
+				<div class="box1 group1" id="option2">
+					<div class="heading" >Serve Static Files (CSS/JS)</div>
+
+				</div>
+
+
+				<div class="box1 group1" id="option3">
+					<div class="heading" >Save Data To Database</div>
+
+				</div>
+
+
+				<div class="box1 group1" id="option4">
+					<div class="heading"  >Accept Form Data</div>
+
+				</div>
+
+				<div class="box1" >
+					<div class="heading"  >Code</div>
+					<div class="code" id="result">//Code for Backend<br></div>
+				</div>
+			
+
+		</div>
+
+
+		<!-- </form> -->
+		<script type="text/javascript">
+			$(document).ready(function () {
+				
+
+
+				$('.group1').hide();
+				$('#option1').show();
+				$('#action').change(function () {
+					$('.group1').hide();
+					$('#'+$(this).val()).show();
+				})
+
+
+
+				$('#object').click(function(){
+       				var inputValue = $(this).attr("value");
+        			$("." + inputValue).toggle();
+    			});
+			});
+
+		</script>
+		<script type="text/javascript">
+
+		 
+		 $('#submit').click(function(){
+
+		 	var url_temp=$( "#url" ).val();
+		 	var method_temp=$( "#method" ).val();
+		 	var action_temp=$( "#action" ).val();
+		 	var pathToHTML_temp=$( "#pathToHTML" ).val();
+		 	var routerNumber = 1;
+
+
+			 $.ajax({
+				  type: 'POST',
+				  url: '/make/',
+				  data: {
+				  	router : url_temp,
+				  	method : method_temp,
+				  	action : action_temp,
+				  	pathToHTML : pathToHTML_temp,
+				  	routerNumber : routerNumber,
+
+				  },
+				  success: function (response) {
+				   $('#result').append(response);
+				  }
+			 });
+		
+			}); 
+		</script>
+
+	</body>
+
+</html>
