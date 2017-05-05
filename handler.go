@@ -27,8 +27,11 @@ func Generate(w http.ResponseWriter , r *http.Request, _ httprouter.Params) {
 	method := r.FormValue("method")
 	action := r.FormValue("action")
 	pathToHTML := r.FormValue("pathToHTML")
-
 	routerNumber := r.FormValue("routerNumber")
+
+	var finalCode string
+
+	
 
 	routerDetails := RouterDetails{ 
 
@@ -39,17 +42,18 @@ func Generate(w http.ResponseWriter , r *http.Request, _ httprouter.Params) {
 		RouterNumber : routerNumber,
 	}
 
-	fmt.Println(routerDetails)
 
 	//allVars := getVariablesFromURL(url)
 	//str_allVars := strings.Join(allVars," ")
 	
 	routerCall := generateRouterCall(routerDetails) 
 
-	fmt.Println( routerCall )
+
+
+	finalCode = getFirstBlock() + getPackages(action) + getBeginMainFunc() + routerCall + getEndMainFunc() + generateRouterFunc(routerDetails)
 
 	//fmt.Println(allVars)
-	fmt.Fprintf(w,routerCall)
+	fmt.Fprintf(w,finalCode)
 	
 }
 

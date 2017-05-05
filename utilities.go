@@ -36,17 +36,59 @@ func generateRouterCall(details RouterDetails) string{
 
 	var funcName string
 
-	
-
 	if details.UseCase == "option1" {
 		funcName = "ServeHTML"+ (details.RouterNumber)
 	}
 
 	var routerCall string
-	routerCall = "server." + details.Method + "(\"" + details.RouterURL + "\"," + funcName +")"
-
+	routerCall = "&nbsp;&nbsp;server." + details.Method + "(\"" + details.RouterURL + "\"," + funcName +")"
 
 	return routerCall
 
-
 }
+
+
+func generateRouterFunc(details RouterDetails) string{
+
+	var funcDefn string
+
+	if details.UseCase == "option1" {
+		
+		funcName := "ServeHTML"+ (details.RouterNumber)
+		
+		args := "(w http.ResponseWriter , r *http.Request, _ httprouter.Params) {"
+
+		BeginfuncDefn := "<br><br>func " + funcName + args
+
+		BeginFuncBody := "<br>&nbsp;path := \"" + details.PathToHTML + "\"<br>"
+
+		subFunc1 := "&nbsp;homepage , err := template.ParseFiles( path )<br>"
+
+		errCheck := "&nbsp;if(err!=nil){<br>&nbsp;&nbsp;log.Println(err)<br>&nbsp;}"
+
+		subFunc2 := "<br>&nbsp;homepage.Execute(w,nil)<br>}<br>"
+
+		funcDefn = BeginfuncDefn + BeginFuncBody + subFunc1 + errCheck + subFunc2
+
+
+	}
+
+	return funcDefn
+}
+
+
+func getPackages(action string) string{
+
+	var pkgList []string
+
+	if action=="option1" {
+		
+
+		pkgList = []string{"net/http","httprouter","html/template","fmt","os","log"}
+
+		
+	}
+
+	return getPackageList(pkgList)
+}
+

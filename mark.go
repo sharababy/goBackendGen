@@ -54,3 +54,15 @@ func GetPort() string {
         }
         return ":" + port
 }
+
+/*
+Possible errors:
+
+1 .router URL  must begin with /
+
+
+
+*/
+
+
+

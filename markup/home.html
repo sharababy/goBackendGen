@@ -45,7 +45,7 @@
 
 					
 					<div class="opt1">
-						<input type="text" id="url" name="url" placeholder="Router URL (eg: /yourRoute/:user/:data/ ) ">
+						<input type="text" id="url" name="url" placeholder="Router URL (eg: /yourRoute/:user/:data/ ) " required>
 					</div>
 					
 					<div class="opt1">
@@ -93,7 +93,7 @@
 					<div class="heading" >Serve HTML</div>
 
 					<div class="opt1">
-						<input type="text" name="pathToFile" placeholder="Path to HTML file (w.r.t local Directory)" id="pathToHTML">
+						<input type="text" name="pathToFile" placeholder="Path to HTML file (w.r.t local Directory)" id="pathToHTML" required>
 					</div>
 
 					<p class="normal">
@@ -142,7 +142,10 @@
 
 				<div class="box1" >
 					<div class="heading"  >Code</div>
-					<div class="code" id="result">//Code for Backend<br></div>
+					<div class="code" id="result">//Code for Backend<br><br>
+					//Fill in the parameters <br>
+					//as per your requirements<br>
+					//then click on Generate</div>
 				</div>
 			
 
@@ -182,23 +185,28 @@
 		 	var pathToHTML_temp=$( "#pathToHTML" ).val();
 		 	var routerNumber = 1;
 
+		 	if (url_temp == "" || pathToHTML_temp == ""){
 
-			 $.ajax({
-				  type: 'POST',
-				  url: '/make/',
-				  data: {
-				  	router : url_temp,
-				  	method : method_temp,
-				  	action : action_temp,
-				  	pathToHTML : pathToHTML_temp,
-				  	routerNumber : routerNumber,
+		 		window.alert("Please fill out all parameters")
+		 	}
+		 	else{
+				 $.ajax({
+					  type: 'POST',
+					  url: '/make/',
+					  data: {
+					  	router : url_temp,
+					  	method : method_temp,
+					  	action : action_temp,
+					  	pathToHTML : pathToHTML_temp,
+					  	routerNumber : routerNumber,
 
-				  },
-				  success: function (response) {
-				   $('#result').append(response);
-				  }
-			 });
-		
+					  },
+					  success: function (response) {
+					   $('#result').empty();
+					   $('#result').append("//Code for Backend <br>"+response);
+					  }
+				 });
+			}
 			}); 
 		</script>
 
