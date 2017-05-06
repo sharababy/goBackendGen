@@ -27,11 +27,10 @@ func Generate(w http.ResponseWriter , r *http.Request, _ httprouter.Params) {
 	method := r.FormValue("method")
 	action := r.FormValue("action")
 	pathToHTML := r.FormValue("pathToHTML")
+	pathToCSS := r.FormValue("pathToCSS")
 	routerNumber := r.FormValue("routerNumber")
 
 	var finalCode string
-
-	
 
 	routerDetails := RouterDetails{ 
 
@@ -40,15 +39,14 @@ func Generate(w http.ResponseWriter , r *http.Request, _ httprouter.Params) {
 		UseCase : action,
 		PathToHTML : pathToHTML,
 		RouterNumber : routerNumber,
+		PathToCSS : pathToCSS,
 	}
 
-
+	fmt.Println(routerDetails)
 	//allVars := getVariablesFromURL(url)
 	//str_allVars := strings.Join(allVars," ")
 	
 	routerCall := generateRouterCall(routerDetails) 
-
-
 
 	finalCode = getFirstBlock() + getPackages(action) + getBeginMainFunc() + routerCall + getEndMainFunc() + generateRouterFunc(routerDetails)
 

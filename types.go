@@ -6,6 +6,7 @@ type RouterDetails struct{
 	Method string
 	UseCase string
 	PathToHTML string
-
+	PathToCSS string
+	
 	RouterNumber string
 }

@@ -68,27 +68,53 @@ nav-right a:hover{
 }
 
 .content{
+
 	width:100%;
 	height:auto;
+	display: -webkit-flex;
+    -webkit-flex-wrap: wrap; 
+    display: flex;   
+    flex-wrap: wrap;
+    border-top:#ccc solid 1px;
+}
+
+.subBox1{
+	width:62%;
+	height:auto;
+	 display: -webkit-flex;
+    -webkit-flex-wrap: wrap; 
+    display: flex;   
+    flex-wrap: wrap;
+
+}
+
+.subBox2{
+	width:35%;
+	min-width: 25%;
+	max-width: 35%;
+	height:300px;
 	 display: -webkit-flex; /* Safari */
     -webkit-flex-wrap: wrap; /* Safari 6.1+ */
     display: flex;   
     flex-wrap: wrap;
-
-    
-    border-top:#ccc solid 1px;
 }
+
 
 .box1{
 	margin:20px;
-	height:auto;
+	height:270px;
 	width:380px;
 
-	min-width: 300px;
-
-	
+	min-width: 300px;	
 }
 
+
+.Fullbox{
+	margin:20px;
+	height:auto;
+	width:100%;
+
+}
 .heading{
 	font-family:'Quicksand', sans-serif;
 	color:#000;
@@ -129,7 +155,7 @@ nav-right a:hover{
 
 .button{
 	margin:30px;
-	float:right;
+	float:left;
 	padding-top:7px;
 	padding-bottom:7px;
 	padding-left:12px;
@@ -139,6 +165,8 @@ nav-right a:hover{
 	font-family:'Quicksand', sans-serif;
 	color:#000;
 	font-size:13px;
+
+	height:35px;
 
 	border-radius:2px;
 	border:none;
@@ -166,7 +194,7 @@ nav-right a:hover{
 	font-family: 'Source Code Pro', monospace;
 	font-size: 13px;
 	color:#000;
-	word-wrap: normal;
-
+	word-wrap: break-word;
 	background:#ebeced;
 }
+
