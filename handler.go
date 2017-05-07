@@ -9,8 +9,6 @@ import(
 	//"strings"
 )
 
-
-
 func GenHome(w http.ResponseWriter , r *http.Request, _ httprouter.Params){
 	
 	path := "markup/home.html"

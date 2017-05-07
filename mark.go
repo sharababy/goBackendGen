@@ -27,6 +27,7 @@ func main() {
 	}
 
 	server.ServeFiles("/markup/styles/*filepath", http.Dir("./markup/styles"))
+	server.ServeFiles("/markup/js/*filepath", http.Dir("./markup/js"))
 	http.ListenAndServe(GetPort(),server)
 }
 

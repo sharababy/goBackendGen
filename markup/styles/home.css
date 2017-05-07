@@ -95,16 +95,16 @@ nav-right a:hover{
 	height:300px;
 	 display: -webkit-flex; /* Safari */
     -webkit-flex-wrap: wrap; /* Safari 6.1+ */
-    display: flex;   
+    display: flex;
     flex-wrap: wrap;
 }
 
 
 .box1{
 	margin:20px;
-	height:270px;
+	height:auto;
 	width:380px;
-
+	
 	min-width: 300px;	
 }
 
