@@ -122,7 +122,7 @@ nav-right a:hover{
 	font-size:22px;
 	text-align: left;
 
-	border-bottom:2px solid #444;
+	border-bottom:1px solid #ccc;
 }
 
 .opt1{
@@ -200,6 +200,12 @@ nav-right a:hover{
 	background:#ebeced;
 }
 
+.f9{
+	font-size: 9px;
+}
+.f11{
+	font-size: 11px;
+}
 .f13{
 	font-size: 13px;
 }
@@ -216,4 +222,29 @@ nav-right a:hover{
 	font-size: 30px;
 }
 
+.roundBorder{
+	border:1px solid #777;
+	border-radius:3px;
 
+	padding:2px;
+}
+
+.down_arrow{
+	margin-left:15px;
+	margin-top:1px;
+	margin-right:5px;
+	
+}	
+
+.grey{
+	color:#777;
+}
+
+.dropMenu{
+	background: transparent;
+}
+
+.dropMenu:hover{
+	background: #777;
+	color:#fff;
+}

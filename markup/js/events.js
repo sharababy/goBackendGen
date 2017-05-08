@@ -64,7 +64,13 @@ var routerCount = 1
  	console.log("router Count: ",routerCount);
 
  	$( ".lastBox" ).after('<div class="box1" id="router'+routerCount+'">\
-					<div class="heading">Basics <img class="down_arrow floatRight dropMenu" src="/markup/styles/down_arrow.png" routerNumber = "'+routerCount+'"><small class="floatRight">ROUTER '+routerCount+'</small></div>\
+					<div class="heading">Basics \
+\
+						<div class="floatRight f11 grey roundBorder dropMenu" routerNumber = "'+routerCount+'">\
+							<i class="fa fa-chevron-down floatRight down_arrow" aria-hidden="true"></i>\
+							Router '+routerCount+' \
+						</div>\
+					</div>\
 					<div class="opt2">\
 						What happens when this route is called :<br><br>\
 						<select name="action" id="action'+routerCount+'" class="action" routerNumber = "'+routerCount+'">\
@@ -122,7 +128,9 @@ var routerCount = 1
 \
 \
 				<div class="box1 group'+routerCount+'" id="'+routerCount+'option1">\
-					<div class="heading" >Serve HTML <small class="floatRight">ROUTER '+routerCount+'</small></div>\
+					<div class="heading" >Serve HTML <div class="floatRight f11 grey roundBorder dropMenu" routerNumber = "'+routerCount+'">\
+							Router '+routerCount+' \
+						</div></div>\
 \
 					<div class="opt1">\
 						<input type="text" name="pathToHTML" placeholder="Path to HTML file (w.r.t local Directory)" id="pathToHTML" required>\
@@ -156,7 +164,9 @@ var routerCount = 1
 \
 \
 				<div class="box1 group'+routerCount+'" id="'+routerCount+'option2">\
-					<div class="heading" >Serve Static Files (CSS/JS) <small class="floatRight">ROUTER '+routerCount+'</small></div>\
+					<div class="heading" >Serve Static Files (CSS/JS) <div class="floatRight f11 grey roundBorder dropMenu" routerNumber = "'+routerCount+'">\
+							Router '+routerCount+' \
+						</div></div>\
 					<div class="opt1">\
 						\
 						<input type="text" name="pathToCSS" placeholder="Path to CSS/JS files (w.r.t local Directory)" id="pathToCSS" required>\
@@ -167,12 +177,16 @@ var routerCount = 1
 \
 \
 				<div class="box1 group'+routerCount+'" id="'+routerCount+'option3">\
-					<div class="heading" >Save Data To Database <small class="floatRight">ROUTER '+routerCount+'</small></div>\
+					<div class="heading" >Save Data To Database <div class="floatRight f11 grey roundBorder dropMenu" routerNumber = "'+routerCount+'">\
+							Router '+routerCount+' \
+						</div></div>\
 \
 				</div>\
 \
 				<div class="box1 group'+routerCount+' ll" id="'+routerCount+'option4">\
-					<div class="heading"  >Accept Form Data <small class="floatRight">ROUTER '+routerCount+'</small></div>\
+					<div class="heading"  >Accept Form Data <div class="floatRight f11 grey roundBorder dropMenu" routerNumber = "'+routerCount+'">\
+							Router '+routerCount+' \
+						</div></div>\
 \
 				</div>');
 
