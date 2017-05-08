@@ -63,8 +63,8 @@ var routerCount = 1
 
  	console.log("router Count: ",routerCount);
 
- 	$( ".lastBox" ).after('<div class="box1">\
-					<div class="heading">Basics <small class="floatRight">ROUTER '+routerCount+'</small></div>\
+ 	$( ".lastBox" ).after('<div class="box1" id="router'+routerCount+'">\
+					<div class="heading">Basics <img class="down_arrow floatRight dropMenu" src="/markup/styles/down_arrow.png" routerNumber = "'+routerCount+'"><small class="floatRight">ROUTER '+routerCount+'</small></div>\
 					<div class="opt2">\
 						What happens when this route is called :<br><br>\
 						<select name="action" id="action'+routerCount+'" class="action" routerNumber = "'+routerCount+'">\

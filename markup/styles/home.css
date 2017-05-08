@@ -81,11 +81,12 @@ nav-right a:hover{
 .subBox1{
 	width:62%;
 	height:auto;
-	 display: -webkit-flex;
+	display: -webkit-flex;
     -webkit-flex-wrap: wrap; 
     display: flex;   
     flex-wrap: wrap;
 
+    border-right:1px solid #ccc;
 }
 
 .subBox2{
@@ -93,7 +94,7 @@ nav-right a:hover{
 	min-width: 25%;
 	max-width: 35%;
 	height:300px;
-	 display: -webkit-flex; /* Safari */
+	display: -webkit-flex; /* Safari */
     -webkit-flex-wrap: wrap; /* Safari 6.1+ */
     display: flex;
     flex-wrap: wrap;
@@ -155,7 +156,6 @@ nav-right a:hover{
 
 .button{
 	margin:30px;
-	float:left;
 	padding-top:7px;
 	padding-bottom:7px;
 	padding-left:12px;
@@ -182,10 +182,12 @@ nav-right a:hover{
 }
 
 .floatRight{
-
 	float:right;
-
 }
+.floatLeft{
+	float:left;
+}
+
 
 .code{
 	margin:15px;
@@ -197,4 +199,21 @@ nav-right a:hover{
 	word-wrap: break-word;
 	background:#ebeced;
 }
+
+.f13{
+	font-size: 13px;
+}
+.f15{
+	font-size: 15px;
+}
+.f17{
+	font-size: 17px;
+}
+.f22{
+	font-size: 22px;
+}
+.f30{
+	font-size: 30px;
+}
+
 
