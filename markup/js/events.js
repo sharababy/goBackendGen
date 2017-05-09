@@ -5,7 +5,7 @@ var routerCount = 1
 
  	var url_temp=$( "#url" ).val();
  	var method_temp=$( "#method" ).val();
- 	var action_temp=$( "#action" ).val();
+ 	var action_temp=$( "#action1" ).val();
  	var pathToHTML_temp = $( "#pathToHTML" ).val();
  	var routerNumber = 1;
  	var pathToCSS_temp = $( "#pathToCSS" ).val();
@@ -22,16 +22,18 @@ var routerCount = 1
 
  	// }
 
- 	if (action_temp == "option1"){
+
+
+ 	if (action_temp.substring(1) == "option1"){
  		if (url_temp == "" || pathToHTML_temp == ""){
  			window.alert("Please fill out all parameters");
- 			fillCheck = 1
+ 			fillCheck = 1;
  		}
  	}
- 	else if (action_temp == "option2"){
+ 	else if (action_temp.substring(1) == "option2"){
  		if ( pathToCSS_temp == "" ){
  			window.alert("Please fill out all parameters");
- 			fillCheck = 2
+ 			fillCheck = 2;
  		}
  	}
 
