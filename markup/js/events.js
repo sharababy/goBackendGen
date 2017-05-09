@@ -1,6 +1,8 @@
 
-var routerCount = 1
+var routerCount = 1;
  
+var optionCount = 4;
+
  $('#submit').click(function(){
 
  	var url_temp=$( "#url" ).val();
@@ -67,11 +69,16 @@ var routerCount = 1
 
  	$( ".lastBox" ).after('<div class="box1" id="router'+routerCount+'">\
 					<div class="heading">Basics \
-\
-						<div class="floatRight f11 grey roundBorder dropMenu" routerNumber = "'+routerCount+'">\
-							<i class="fa fa-chevron-down floatRight down_arrow" aria-hidden="true"></i>\
-							Router '+routerCount+' \
-						</div>\
+\						<div class="dropdown floatRight">\
+							<div class="f11 grey roundBorder dropMenu" routerNumber = "'+routerCount+'">\
+								<i class="fa fa-chevron-down floatRight down_arrow" aria-hidden="true"></i>\
+								Router '+routerCount+' \
+							</div>\
+							<div class="dropdowncontent">\
+	    						<a href="#" class="f11 grey remove" routerNumber = "'+routerCount+'">Remove Router</a>\
+	    						<a href="#" class="f11 grey lock" routerNumber = "'+routerCount+'">Lock Parameters</a>\
+	  						</div>\
+	  					</div>\
 					</div>\
 					<div class="opt2">\
 						What happens when this route is called :<br><br>\
@@ -130,7 +137,7 @@ var routerCount = 1
 \
 \
 				<div class="box1 group'+routerCount+'" id="'+routerCount+'option1">\
-					<div class="heading" >Serve HTML <div class="floatRight f11 grey roundBorder dropMenu" routerNumber = "'+routerCount+'">\
+					<div class="heading" >Serve HTML <div class="floatRight f11 grey roundBorder metaButton" routerNumber = "'+routerCount+'">\
 							Router '+routerCount+' \
 						</div></div>\
 \
@@ -166,7 +173,7 @@ var routerCount = 1
 \
 \
 				<div class="box1 group'+routerCount+'" id="'+routerCount+'option2">\
-					<div class="heading" >Serve Static Files (CSS/JS) <div class="floatRight f11 grey roundBorder dropMenu" routerNumber = "'+routerCount+'">\
+					<div class="heading" >Serve Static Files (CSS/JS) <div class="floatRight f11 grey roundBorder metaButton" routerNumber = "'+routerCount+'">\
 							Router '+routerCount+' \
 						</div></div>\
 					<div class="opt1">\
@@ -179,14 +186,14 @@ var routerCount = 1
 \
 \
 				<div class="box1 group'+routerCount+'" id="'+routerCount+'option3">\
-					<div class="heading" >Save Data To Database <div class="floatRight f11 grey roundBorder dropMenu" routerNumber = "'+routerCount+'">\
+					<div class="heading" >Save Data To Database <div class="floatRight f11 grey roundBorder metaButton" routerNumber = "'+routerCount+'">\
 							Router '+routerCount+' \
 						</div></div>\
 \
 				</div>\
 \
 				<div class="box1 group'+routerCount+' ll" id="'+routerCount+'option4">\
-					<div class="heading"  >Accept Form Data <div class="floatRight f11 grey roundBorder dropMenu" routerNumber = "'+routerCount+'">\
+					<div class="heading"  >Accept Form Data <div class="floatRight f11 grey roundBorder metaButton" routerNumber = "'+routerCount+'">\
 							Router '+routerCount+' \
 						</div></div>\
 \
@@ -199,3 +206,110 @@ var routerCount = 1
  	$(".ll").addClass("lastBox").removeClass("ll");
 
  });
+
+
+$(document).on("click",".remove",function () {
+
+	var currentrouter = $(this).attr("routerNumber");
+
+	var lastrouter = routerCount;
+
+	$("#router"+currentrouter).remove();
+	$(".group"+currentrouter).remove();
+
+	$.notify.defaults({globalPosition: 'top center'});
+	
+
+	$.notify(
+		"Router "+currentrouter+" Removed !"
+		,"success");
+
+
+
+	console.log("Current: ",currentrouter," last: ",lastrouter);
+	
+	for (var i = parseInt(currentrouter)+1 ;i <= lastrouter; i++) {
+
+		console.log("changing ",i);
+		var newNum = i-1;
+		$("#router"+i).addClass("w");
+		
+
+		var selected = $('.dropMenu[routerNumber="'+i+'"]');
+		$(selected).each(function() {
+
+			$(this).empty();
+
+		});
+
+		$(selected).each(function() {
+
+			$(this).html(
+			'<i class="fa fa-chevron-down floatRight down_arrow" aria-hidden="true"></i>\
+								Router '+newNum
+			);
+
+		});
+
+		$(' .metaButton[routerNumber="'+i+'"]').each(function() {
+
+			$(this).empty();
+
+		});
+
+		$('.metaButton[routerNumber="'+i+'"]').each(function() {
+			
+			$(this).html('Router '+newNum);
+
+		});
+
+		$(' div[routerNumber="'+i+'"]').each(function() {
+			    // `this` is the div
+			$(this).attr( "routerNumber",newNum);
+
+		});
+		$(' select[routerNumber="'+i+'"]').each(function() {
+			    // `this` is the div
+			$(this).attr( "routerNumber",newNum);
+			$(this).attr('id','action'+newNum);
+
+		});
+		$(' a[routerNumber="'+i+'"]').each(function() {
+			    // `this` is the div
+			$(this).attr( "routerNumber",newNum);
+
+		});
+
+		$(' .group'+i).each(function() {
+			    // `this` is the div
+			$(this).removeClass('group'+i).addClass('group'+newNum);
+
+		});	
+
+		for (var j = 1; j <= optionCount+4; j++) { // update this dummy 4 optioncount
+					var thiss = $('option[value="'+i+'option'+j+'"]');
+
+					$(thiss).attr('value',newNum+'option'+j);
+
+			}
+
+		for (var j = 1; j <= optionCount; j++) {
+					var thiss = $('#'+i+'option'+j);
+
+					$(thiss).removeAttr("id");
+					$(thiss).attr('id',newNum+'option'+j);
+
+			}	
+		$("#router"+i).removeAttr('id');
+		$(".w").attr('id','router'+newNum);
+
+		$(".w").removeClass("w");
+	}
+
+	lastrouter--;
+	$("#"+lastrouter+"option4").addClass("lastBox");// update this when options are increased
+	routerCount = lastrouter;
+
+	
+
+});

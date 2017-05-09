@@ -2,7 +2,7 @@
 
 Visit [link] for full documentation,examples,guides.
 
-**Go-Backend Generator**, an online tool which can generate backend code in for based web apps Golang.
+**Go-Backend Generator**, an online tool which can generate backend code in for web apps written in Golang.
 
 It uses data given to it by the developer like routers , HTTP endpoints , object definitions , Database Description ... to generate golang code for the backend.
 

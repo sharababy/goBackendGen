@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="markup/styles/font-awesome/css/font-awesome.min.css">
 		<link rel="shortcut icon" href="markup/styles/favicon.ico"/>
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="markup/js/notify.min.js"></script>
 
 		<style type="text/css">
 			.group{
@@ -43,14 +44,18 @@
 			
 
 			<div class="subBox1">
-				<div class="box1">
+				<div class="box1" id="router1">
 					<div class="heading">Basics 
-
-						<div class="floatRight f11 grey roundBorder dropMenu" routerNumber = "1">
-							<i class="fa fa-chevron-down floatRight down_arrow" aria-hidden="true"></i>
-							Router 1 
-						</div>
-
+						<div class="dropdown floatRight">
+							<div class="f11 grey roundBorder dropMenu dropbtn" routerNumber = "1">
+								<i class="fa fa-chevron-down floatRight down_arrow" aria-hidden="true"></i>
+								Router 1 
+								
+							</div>
+							<div class="dropdowncontent">
+	    						<a href="#Lock" class="f11 grey lock" routerNumber = "1">Lock Parameters</a>
+	  						</div>
+	  					</div>
 					</div>
 
 					<div class="opt2">

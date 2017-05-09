@@ -13,8 +13,6 @@ $(document).ready(function () {
 	
 			var router = $(this).attr("routerNumber");
 
-			console.log(router+"Hello");
-
 			$('.group'+router).hide();
 			$('#'+$(this).val()).show();
 			if ($(this).val()==router+"option2") {
