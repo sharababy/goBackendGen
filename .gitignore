@@ -1,4 +1,4 @@
 # Unignore all with extensions
 !*.*
 # Ignore files with extension `.class` & `.sm`
-*.DS_Store
+.DS_Store
