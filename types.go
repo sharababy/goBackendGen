@@ -22,3 +22,19 @@ type Session struct{
 	AuthToken bool
 	Username string
 }
+
+type Page struct{
+	Session Session
+	ObjectList []Object
+}
+
+type Object struct{
+	ObjectName string
+	KeyValArray []KeyVal
+}
+
+type KeyVal struct{
+	Field string
+	Type string
+}
+

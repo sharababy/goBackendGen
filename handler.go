@@ -16,6 +16,7 @@ func GenHome(w http.ResponseWriter , r *http.Request, _ httprouter.Params){
 
 
 	sessvar := Session{}
+	newPage := Page{}
 
 	auth, _ := session.Values["authenticated"]
 	uname, _ := session.Values["username"]
@@ -24,6 +25,10 @@ func GenHome(w http.ResponseWriter , r *http.Request, _ httprouter.Params){
 			
 		sessvar.Username = uname.(string)
 		sessvar.AuthToken = true
+
+		newPage.Session = sessvar
+
+		newPage.ObjectList = getUserObjects(uname.(string))
 
 	}else{
 		sessvar.AuthToken = false
@@ -39,7 +44,7 @@ func GenHome(w http.ResponseWriter , r *http.Request, _ httprouter.Params){
 	err = session.Save(r, w)
 	riperr(err)
 
-	homepage.Execute(w,sessvar)
+	homepage.Execute(w,newPage)
 }
 
 func Generate(w http.ResponseWriter , r *http.Request, _ httprouter.Params) {	

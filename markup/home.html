@@ -36,8 +36,8 @@
 				<a href="#" class="navLinks">DEVELOPERS</a>
 				<a href="#" class="navLinks">ABOUT</a>|
 				<div class="floatRight loginBox">
-				{{if .AuthToken}}
-					<a href="#" class="navLinks toggleUserBox">Welcome {{.Username}}</a>
+				{{if .Session.AuthToken}}
+					<a href="#" class="navLinks toggleUserBox">Welcome {{.Session.Username}}</a>
 					<a href="#" id="signOut" class="normallink f13"> (Logout) </a>
 
 				{{else}}
@@ -107,7 +107,7 @@
 							</option>
 						</select>
 					</div>	
-					<div class="opt1" class="urlBlock1">
+					<div class="opt1 urlBlock1">
 						<input type="text" id="url" name="url" placeholder="Router URL (eg: /yourRoute/:user/:data/ ) " required>
 					</div>
 					
@@ -219,6 +219,25 @@
 					//then click on Generate</div>
 				</div>
 			</div>
+			{{if .Session.AuthToken}}
+			<div class="box1">
+				<div class="Fullbox" >
+					<div class="heading" >Objects</div>
+					{{range .ObjectList}}
+					<div>
+						{{.ObjectName}}
+						<ul>
+						{{range .KeyValArray}}
+							<li>
+								{{.Field}} , {{.Type}}
+							</li>
+						{{end}}
+						</ul>
+					</div>
+					{{end}}
+				</div>
+			</div>
+			{{end}}
 			
 			
 		</div>

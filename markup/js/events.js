@@ -109,7 +109,7 @@ var optionCount = 4;
 							</option>\
 						</select>\
 					</div>	\
-					<div class="opt1" class="urlBlock'+routerCount+'">\
+					<div class="opt1 urlBlock'+routerCount+'" >\
 						<input type="text" id="url" name="url" placeholder="Router URL (eg: /yourRoute/:user/:data/ ) " required>\
 					</div>\
 					\

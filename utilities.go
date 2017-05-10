@@ -78,10 +78,10 @@ func getPackages(action string) string{
 
 	var pkgList []string
 
-	if action=="option1" {
+	if action[1:]=="option1" {
 		pkgList = []string{"net/http","httprouter","html/template","fmt","os","log"}
 	
-	}else if action=="option2" {
+	}else if action[1:]=="option2" {
 		pkgList = []string{"net/http","httprouter","fmt","os"}
 	}
 

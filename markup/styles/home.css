@@ -120,9 +120,9 @@ nav-right{
 .heading{
 	font-family:'Quicksand', sans-serif;
 	color:#000;
-	font-size:22px;
+	font-size:19px;
 	text-align: left;
-
+	padding:10px;
 	border-bottom:1px solid #ccc;
 }
 
