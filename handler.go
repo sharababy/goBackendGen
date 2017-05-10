@@ -11,12 +11,35 @@ import(
 
 func GenHome(w http.ResponseWriter , r *http.Request, _ httprouter.Params){
 	
+	session, err := store.Get(r, "goBackend-cookie")
+	riperr(err)
+
+
+	sessvar := Session{}
+
+	auth, _ := session.Values["authenticated"]
+	uname, _ := session.Values["username"]
+
+	if auth=="true" {
+			
+		sessvar.Username = uname.(string)
+		sessvar.AuthToken = true
+
+	}else{
+		sessvar.AuthToken = false
+	}
+
+
+
 	path := "markup/home.html"
 
 	homepage , err := template.ParseFiles( path )
 	riperr(err)
 
-	homepage.Execute(w,nil)
+	err = session.Save(r, w)
+	riperr(err)
+
+	homepage.Execute(w,sessvar)
 }
 
 func Generate(w http.ResponseWriter , r *http.Request, _ httprouter.Params) {	

@@ -28,4 +28,11 @@ $(document).ready(function () {
 			var inputValue = $(this).attr("value");
 		$("." + inputValue).toggle();
 	});
+
+	$(document).on("click",".toggleLoginBox",function(){
+
+		$(".loginInputs").toggle();
+
+	});
+
 });

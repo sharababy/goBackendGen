@@ -16,7 +16,7 @@ var optionCount = 4;
 
  	// var routerDetails = {
 
- 		// 	RouterURL : url_temp,
+ 		// RouterURL : url_temp,
 		// Method : method_temp,
 		// UseCase : action_temp,
 		// PathToHTML : pathToHTML,
@@ -221,7 +221,7 @@ $(document).on("click",".remove",function () {
 	
 
 	$.notify(
-		"Router "+currentrouter+" Removed !"
+		"Router Removed !"
 		,"success");
 
 

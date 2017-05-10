@@ -43,6 +43,16 @@ var RouterList = Routers{
 		"/make/",
 		Generate,
 	},
+	Route{
+		"POST",
+		"/challenge/",
+		Authenticate,
+	},
+	Route{
+		"POST",
+		"/logout/",
+		Logout,
+	},
 }
 
 

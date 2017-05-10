@@ -10,3 +10,15 @@ type RouterDetails struct{
 	
 	RouterNumber string
 }
+
+
+type SmallUser struct{
+
+	Username string
+	Password string
+}
+
+type Session struct{
+	AuthToken bool
+	Username string
+}

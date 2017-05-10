@@ -32,11 +32,29 @@
 
 			<nav-right>
 				
-				<a href="#">DOCS</a>
-				<a href="#">DEVELOPERS</a>
-				<a href="#">ABOUT</a>|
-				<a href="#">LOGIN / SIGN UP</a>
+				<a href="#" class="navLinks">DOCS</a>
+				<a href="#" class="navLinks">DEVELOPERS</a>
+				<a href="#" class="navLinks">ABOUT</a>|
+				<div class="floatRight loginBox">
+				{{if .AuthToken}}
+					<a href="#" class="navLinks toggleUserBox">Welcome {{.Username}}</a>
+					<a href="#" id="signOut" class="normallink f13"> (Logout) </a>
 
+				{{else}}
+					<a href="#" class="navLinks toggleLoginBox">LOGIN / SIGN UP</a>
+
+					<div class="loginInputs">
+						<input type="text" id="username" name="username" placeholder="Username">
+						<input type="password" id="password" name="password" placeholder="Password"><br><br>
+						<a href="#" class="f11 normallink">Forgot Password ?</a>
+						<button type="submit" class="f13" id="login">Login</button>
+						<hr>
+						<div class="f13">New User ?</div>
+						<button type="signup" class="f13">Sign Up</button>
+					</div>
+				{{end}}
+
+				</div>
 			</nav-right>
 		</nav-bar>
 		<!-- <form method="POST" id="makeForm"> -->
@@ -213,6 +231,7 @@
 		<!-- </form> -->
 		<script type="text/javascript" src="markup/js/showBox.js"></script>
 		<script type="text/javascript" src="markup/js/events.js"></script>
+		<script type="text/javascript" src="markup/js/auth.js"></script>
 
 	</body>
 
