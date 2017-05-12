@@ -16,6 +16,7 @@ $(document).on("click",'#login',function(){
 		 $.ajax({
 			  type: 'POST',
 			  url: '/challenge/',
+			  dataType: 'json',
 			  data: {
 			  	username:username,
 			  	password:password
@@ -32,10 +33,36 @@ $(document).on("click",'#login',function(){
 					$('.toggleLoginBox').addClass("toggleUserBox");
 					$('.loginInputs').remove();
 					$('.toggleLoginBox').removeClass("toggleLoginBox");
-					$('.toggleUserBox').append("Welcome "+response);
+					$('.toggleUserBox').append("Welcome "+response.Session.Username);
 					$('.loginBox').append('<a href="#" id="signOut" class="normallink"> (Logout)</a>');
+
+					$("#codeBox").after('\
+						<div class="box1 objectBox">\
+							<div class="Fullbox objectBoxInner" >\
+								<div class="heading " >Objects</div>\
+									\
+								</div>\
+							</div>'
+					);
+					
+					for (var i = 0; i < (response.ObjectList).length; i++) {
+						
+						$('.objectBoxInner').append('<div class="objectName normal objectName'+response.ObjectList[i].ObjectName+'">\
+										'+response.ObjectList[i].ObjectName+'<ul></ul>\
+										</div>');
+										
+						for( var j=0 ; j< (response.ObjectList[i].KeyValArray).length; j++){
+							$('.objectName'+response.ObjectList[i].ObjectName+' ul').append('<li class="normal">\
+												'+response.ObjectList[i].KeyValArray[j].Field+' '+response.ObjectList[i].KeyValArray[j].Type+'</li>');
+											
+						}
+
+					}
+
 				}
-			  }
+
+				console.log(response);
+			   }
 		 });
 	}
 
@@ -51,7 +78,7 @@ $(document).on("click",'#signOut',function(){
 			  data: {},
 			  success: function (response) {
 			  	
-				
+					$('.objectBox').remove();
 				  	$('.loginBox').empty();
 					$('.loginBox').append('<a href="#" class="navLinks toggleLoginBox">LOGIN / SIGN UP</a>\
 					<div class="loginInputs">\

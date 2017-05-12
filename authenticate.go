@@ -8,6 +8,8 @@ import(
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/sessions"
+	"encoding/json"
+	//"bytes"
 )
 
 
@@ -25,6 +27,8 @@ func Authenticate(w http.ResponseWriter , r *http.Request , _ httprouter.Params)
 		uname := r.FormValue("username")
 		pword := r.FormValue("password")
 
+		sessvar := Session{}
+		newPage := Page{}
 		newUser := SmallUser{
 
 			Username : uname,
@@ -40,7 +44,24 @@ func Authenticate(w http.ResponseWriter , r *http.Request , _ httprouter.Params)
 			session.Values["username"] = uname
 			err = session.Save(r, w)
 			riperr(err)
-			fmt.Fprintf(w,uname)
+			
+			sessvar.Username = uname
+			sessvar.AuthToken = true
+			
+			newPage.Session = sessvar
+			newPage.ObjectList = getUserObjects(uname)
+
+			pageInJSON ,err:= json.Marshal(newPage) 
+			riperr(err)
+
+			// w.Header().Set("Content-Type", "application/json")
+				
+			// n := bytes.IndexByte(pageInJSON, 0)
+
+			// s := string(pageInJSON[:n])
+
+			fmt.Fprintf(w,string(pageInJSON))
+
 		}
 
 		if userExists == false {

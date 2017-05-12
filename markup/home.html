@@ -208,9 +208,14 @@
 					</div>
 
 				</div>
-								
+				<div class="Fullbox" >
+					<button class="button floatLeft f15" id="addRouter"><i class="fa fa-plus" aria-hidden="true"></i> ADD ROUTER</button>	
+					<button class="button floatLeft f15" id="submit">GENERATE
+					<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+					</button>
+				</div>
 			</div>
-			<div class="subBox2">
+			<div class="subBox2" id="codeBox">
 				<div class="Fullbox" >
 					<div class="heading" >Code</div>
 					<div class="code" id="result">//Code for Backend<br><br>
@@ -220,19 +225,20 @@
 				</div>
 			</div>
 			{{if .Session.AuthToken}}
-			<div class="box1">
-				<div class="Fullbox" >
+			<div class="box1 objectBox">
+				<div class="Fullbox objectBoxInner" >
 					<div class="heading" >Objects</div>
-					{{range .ObjectList}}
-					<div>
-						{{.ObjectName}}
+					{{range .ObjectList}} 
+					<div class="objectName normal">
+						{{.ObjectName}} {
 						<ul>
 						{{range .KeyValArray}}
-							<li>
-								{{.Field}} , {{.Type}}
-							</li>
-						{{end}}
+							<div class="normal">
+								{{.Field}}  {{.Type}}
+							</div>
+						{{end}} }
 						</ul>
+						
 					</div>
 					{{end}}
 				</div>
@@ -242,10 +248,7 @@
 			
 		</div>
 
-		<button class="button floatLeft f15" id="addRouter"><i class="fa fa-plus" aria-hidden="true"></i> ADD ROUTER</button>	
-		<button class="button floatLeft f15" id="submit">GENERATE
-	<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-	</button>
+		
 
 		<!-- </form> -->
 		<script type="text/javascript" src="markup/js/showBox.js"></script>

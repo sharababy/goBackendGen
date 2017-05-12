@@ -42,4 +42,4 @@ func getUserObjects(Username string)([]Object){
     }
     
     return allObjects
-}
+}		
