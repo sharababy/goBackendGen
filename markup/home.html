@@ -227,18 +227,21 @@
 			{{if .Session.AuthToken}}
 			<div class="box1 objectBox">
 				<div class="Fullbox objectBoxInner" >
-					<div class="heading" >Objects</div>
+					<div class="heading" >Objects Defined by You</div>
 					{{range .ObjectList}} 
 					<div class="objectName normal">
-						{{.ObjectName}} {
+						{{.ObjectName}} <details> {
 						<ul>
+						
 						{{range .KeyValArray}}
 							<div class="normal">
-								{{.Field}}  {{.Type}}
+								{{.Field}}  {{.Type}} ,
 							</div>
-						{{end}} }
-						</ul>
+						{{end}} 
 						
+						</ul>
+						}
+						</details>
 					</div>
 					{{end}}
 				</div>

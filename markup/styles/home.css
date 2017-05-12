@@ -348,16 +348,10 @@ nav-right{
 	text-decoration: underline;
 }
 
-.ObjectName{
-	margin:20px;
-	font-family:'Quicksand', sans-serif;
-	color:#444;
-	font-size:15px;
-
-}
-
-.ObjectName ul{
-	list-style: none;
+.objectName{
+	padding:10px;
+	background: #ebeced;
+	margin:10px;
 }
 
 li.normal{

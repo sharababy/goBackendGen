@@ -39,7 +39,7 @@ $(document).on("click",'#login',function(){
 					$("#codeBox").after('\
 						<div class="box1 objectBox">\
 							<div class="Fullbox objectBoxInner" >\
-								<div class="heading " >Objects</div>\
+								<div class="heading " >Objects Defined by You</div>\
 									\
 								</div>\
 							</div>'
@@ -48,12 +48,12 @@ $(document).on("click",'#login',function(){
 					for (var i = 0; i < (response.ObjectList).length; i++) {
 						
 						$('.objectBoxInner').append('<div class="objectName normal objectName'+response.ObjectList[i].ObjectName+'">\
-										'+response.ObjectList[i].ObjectName+'<ul></ul>\
+										'+response.ObjectList[i].ObjectName+'<details>{<ul></ul>}</details>\
 										</div>');
 										
 						for( var j=0 ; j< (response.ObjectList[i].KeyValArray).length; j++){
-							$('.objectName'+response.ObjectList[i].ObjectName+' ul').append('<li class="normal">\
-												'+response.ObjectList[i].KeyValArray[j].Field+' '+response.ObjectList[i].KeyValArray[j].Type+'</li>');
+							$('.objectName'+response.ObjectList[i].ObjectName+' ul').append('<div class="normal">\
+												'+response.ObjectList[i].KeyValArray[j].Field+' '+response.ObjectList[i].KeyValArray[j].Type+' ,</div>');
 											
 						}
 
