@@ -37,7 +37,7 @@ $(document).on("click",'#login',function(){
 					$('.toggleUserBox').append("Welcome "+response.Session.Username);
 					$('.loginBox').append('<a href="#" id="signOut" class="normallink"> (Logout)</a>');
 					$('.objectTip').remove();
-					
+
 
 					// this is appending the Objects box after dynamic login
 					$("#codeBox").after('\
@@ -83,9 +83,7 @@ $(document).on("click",'#signOut',function(){
 			  url: '/logout/',
 			  data: {},
 			  success: function (response) {
-			  		$('.objectOptions').each(function(){
-			  			$(this).remove();
-			  		});
+			  		$('#objectSelect').empty();
 			  		$('.object').append('<small class="objectTip"><br>(sign in to add/create Objects)</small>');
 					$('.objectBox').remove();
 				  	$('.loginBox').empty();
