@@ -29,6 +29,7 @@ $(document).on("click",'#login',function(){
 					,"error");
 				}
 				else{
+					// this is removing the login and loginbox after successful login
 				  	$('.toggleLoginBox').empty();
 					$('.toggleLoginBox').addClass("toggleUserBox");
 					$('.loginInputs').remove();
@@ -36,12 +37,14 @@ $(document).on("click",'#login',function(){
 					$('.toggleUserBox').append("Welcome "+response.Session.Username);
 					$('.loginBox').append('<a href="#" id="signOut" class="normallink"> (Logout)</a>');
 
+					// this is appending the Objects box after dynamic login
 					$("#codeBox").after('\
 						<div class="box1 objectBox">\
 							<div class="Fullbox objectBoxInner" >\
 								<div class="heading " >Objects Defined by You</div>\
 									\
 								</div>\
+								<button class="button floatLeft f15" id="addObject"><i class="fa fa-plus" aria-hidden="true"></i> DEFINE NEW OBJECT</button>\
 							</div>'
 					);
 					
@@ -62,7 +65,7 @@ $(document).on("click",'#login',function(){
 				}
 
 				console.log(response);
-			   }
+			  }
 		 });
 	}
 
