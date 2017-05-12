@@ -36,6 +36,8 @@ $(document).on("click",'#login',function(){
 					$('.toggleLoginBox').removeClass("toggleLoginBox");
 					$('.toggleUserBox').append("Welcome "+response.Session.Username);
 					$('.loginBox').append('<a href="#" id="signOut" class="normallink"> (Logout)</a>');
+					$('.objectTip').remove();
+					
 
 					// this is appending the Objects box after dynamic login
 					$("#codeBox").after('\
@@ -59,7 +61,8 @@ $(document).on("click",'#login',function(){
 												'+response.ObjectList[i].KeyValArray[j].Field+' '+response.ObjectList[i].KeyValArray[j].Type+' ,</div>');
 											
 						}
-
+						//$("#objectSelect").empty();
+						$("#objectSelect").append('<option value="'+response.Session.Username+response.ObjectList[i].ObjectName+'">'+response.ObjectList[i].ObjectName+'</option>');
 					}
 
 				}
@@ -80,7 +83,10 @@ $(document).on("click",'#signOut',function(){
 			  url: '/logout/',
 			  data: {},
 			  success: function (response) {
-			  	
+			  		$('.objectOptions').each(function(){
+			  			$(this).remove();
+			  		});
+			  		$('.object').append('<small class="objectTip"><br>(sign in to add/create Objects)</small>');
 					$('.objectBox').remove();
 				  	$('.loginBox').empty();
 					$('.loginBox').append('<a href="#" class="navLinks toggleLoginBox">LOGIN / SIGN UP</a>\

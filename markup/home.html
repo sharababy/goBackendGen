@@ -150,25 +150,25 @@
 						Enclose Object in Template : <input type="checkbox" name="object" value="object" id="object"><br>
 						<small>(Leave unchecked for static HTML Pages)</small>
 					</p>
-
+					
 					<p class="normal object">
 						Select Object : 
-
+						{{$user := .Session.Username}}
+					
 						<select name="objectSelect" id="objectSelect">
-							<option value="option1">
-								User
+						{{range .ObjectList}}
+							<option class="objectOptions"  
+							value={{$user}}/{{.ObjectName}}>
+								{{.ObjectName}}
 							</option>
-							<option value="option2">
-								Foo
-							</option>
-							<option value="option3"> 
-								Bar
-							</option>
-							
+						{{end}}
 						</select>
+						{{if not .Session.AuthToken}}
+							<small class="objectTip">(sign in to add/create Objects)</small>
+						{{end}}
 						
 					</p>
-
+					
 					
 				</div>
 
